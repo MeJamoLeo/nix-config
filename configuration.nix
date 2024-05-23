@@ -43,6 +43,41 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+	    fcitx5-mozc
+		    fcitx5-configtool
+    ];
+  };
+
+  # Add environment variables for fcitx5
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    QT4_IM_MODULE = "fcitx";
+    CLUTTER_IM_MODULE = "fcitx";
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts-cjk-serif
+        noto-fonts-cjk-sans
+        noto-fonts-emoji
+        nerdfonts
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
+        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
+        monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
