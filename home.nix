@@ -1,3 +1,4 @@
+{pkgs, ...}:
 {
   home = rec { # recでAttribute Set内で他の値を参照できるようにする
     username="bbb";
@@ -5,4 +6,14 @@
     stateVersion = "22.11";
   };
   programs.home-manager.enable = true; # home-manager自身でhome-managerを有効化
+
+   home.packages = with pkgs; [
+   bat
+   eza
+   ripgrep
+   lazygit
+ ];
+
+  programs.neovim.enable = true;
+  programs.git.enable = true;
 }
