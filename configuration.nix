@@ -125,10 +125,6 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "bbb";
-
   # Install firefox.
   programs.firefox.enable = true;
   programs.starship.enable = true;
