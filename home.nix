@@ -12,6 +12,7 @@
    eza
    ripgrep
    lazygit
+   online-judge-tools
  ];
 
   programs.neovim.enable = true;

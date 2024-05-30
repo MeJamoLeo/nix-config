@@ -128,6 +128,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  # Install starship
   programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
