@@ -40,6 +40,12 @@ programs.neovim = {
          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd' ]
       '';
     }
+    {
+      plugin = rainbow;
+      config = ''
+        let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+      '';
+    }
   ];
 };
 
