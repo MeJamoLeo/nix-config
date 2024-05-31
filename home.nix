@@ -1,5 +1,10 @@
-{pkgs, ...}:
+{ config, lib, pkgs, ... }:
+
 {
+  imports = [
+  ./i3.nix
+  ];
+
   home = rec { # recでAttribute Set内で他の値を参照できるようにする
   username="bbb";
   homeDirectory = "/home/${username}"; # 文字列に値を埋め込む
@@ -39,16 +44,4 @@ programs.neovim = {
 };
 
 programs.git.enable = true;
-
-xsession.windowManager.i3 = {
-  enable = true;
-  package = pkgs.i3-gaps;
-  config = {
-    modifier = "Mod4";
-    gaps = {
-      inner = 10;
-      outer = 5;
-    };
-  };
-};
 }
