@@ -15,9 +15,20 @@
    online-judge-tools
  ];
 
-  programs.neovim.enable = true;
-  programs.git.enable = true;
+  programs.neovim = {
+	  enable = true;
+	  plugins = with pkgs.vimPlugins; [
+		  vim-nix
+		  {
+			  plugin = iceberg-vim;
+			  config = ''
+				  colorscheme iceberg
+				  '';
+		  }
+	  ];
+  };
 
+  programs.git.enable = true;
 
   xsession.windowManager.i3 = {
 	  enable = true;
