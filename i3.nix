@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let 
-mod = "Mod4";
-term = "alacritty";
-browser = "qutebrowser";
+  mod = "Mod4";
+  term = "alacritty";
+  browser = "qutebrowser";
 in {
   xsession.windowManager.i3 = {
     enable = true;
@@ -58,52 +58,46 @@ in {
         "${mod}+Shift+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'\"";
       };
 
-#      workspaces = [
-#      { name = "1"; output = "eDP-1"; }
-#      { name = "2"; output = "eDP-1"; }
-#      { name = "3"; output = "eDP-1"; }
-#      { name = "4"; output = "eDP-1"; }
-#      { name = "5"; output = "eDP-1"; }
-#      { name = "6"; output = "eDP-1"; }
-#      { name = "7"; output = "eDP-1"; }
-#      { name = "8"; output = "eDP-1"; }
-#      { name = "9"; output = "eDP-1"; }
-#      { name = "10"; output = "eDP-1"; }
-#      { name = "11"; output = "DP-3"; }
-#      { name = "12"; output = "DP-3"; }
-#      { name = "13"; output = "DP-3"; }
-#      { name = "14"; output = "DP-3"; }
-#      { name = "15"; output = "DP-3"; }
-#      { name = "16"; output = "DP-3"; }
-#      { name = "17"; output = "DP-3"; }
-#      { name = "18"; output = "DP-3"; }
-#      { name = "19"; output = "DP-3"; }
-#      { name = "20"; output = "DP-3"; }
-#      ];
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "eDP-1"; }
+        { workspace = "2"; output = "eDP-1"; }
+        { workspace = "3"; output = "eDP-1"; }
+        { workspace = "4"; output = "eDP-1"; }
+        { workspace = "5"; output = "eDP-1"; }
+        { workspace = "6"; output = "eDP-1"; }
+        { workspace = "7"; output = "eDP-1"; }
+        { workspace = "8"; output = "eDP-1"; }
+        { workspace = "9"; output = "eDP-1"; }
+        { workspace = "10"; output = "eDP-1"; }
+        { workspace = "11"; output = "DP-3"; }
+        { workspace = "12"; output = "DP-3"; }
+        { workspace = "13"; output = "DP-3"; }
+        { workspace = "14"; output = "DP-3"; }
+        { workspace = "15"; output = "DP-3"; }
+        { workspace = "16"; output = "DP-3"; }
+        { workspace = "17"; output = "DP-3"; }
+        { workspace = "18"; output = "DP-3"; }
+        { workspace = "19"; output = "DP-3"; }
+        { workspace = "20"; output = "DP-3"; }
+      ];
 
-#       bars = [
-#       {
-#         position = "top";
-#         statusCommand = "${pkgs.i3status}/bin/i3status";
-#         colors = {
-#           background = "#3F3B39";
-#           statusline = "#cccccc";
-#           separator = "#BE7704";
-#           focused_workspace = { background = "#2C8691"; border = "#2C8691"; text = "#F6F6F6"; };
-#           active_workspace = { background = "#4C4845"; border = "#48B9C7"; text = "#F6F6F6"; };
-#           inactive_workspace = { background = "#4C4845"; border = "#2C8691"; text = "#cccccc"; };
-#           urgent_workspace = { background = "#900000"; border = "#A00000"; text = "#cccccc"; };
-#         };
-#       }
-#       ];
+      bars = [
+  {
+    position = "top";
+    statusCommand = "${pkgs.i3status}/bin/i3status";
+    colors = {
+      activeWorkspace = { background = "#4C4845"; border = "#48B9C7"; text = "#F6F6F6"; };
+      background = "#3F3B39";
+      focusedWorkspace = { background = "#2C8691"; border = "#2C8691"; text = "#F6F6F6"; };
+      inactiveWorkspace = { background = "#4C4845"; border = "#2C8691"; text = "#cccccc"; };
+      separator = "#BE7704";
+      statusline = "#cccccc";
+      urgentWorkspace = { background = "#900000"; border = "#A00000"; text = "#cccccc"; };
+    };
+  }
+];
 # 
 #       startup = [
-#         "picom -b"
-#         "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-#         "gnome-flashback"
-#         "nm-applet"
-#         "feh --bg-fill /usr/share/backgrounds/System76-Old_Man_Smoked_His_Pipe-by_Ian_Hex_of_LightSweep.jpg"
-#         "fcitx"
 #         "xrandr --output eDP-1 --mode 2160x1350"
 #       ];
 
@@ -130,15 +124,14 @@ in {
 #      { class = "^steam_app*"; }
 #      ];
 #
-#      assigns = [
-#      { class = "^Spotify"; workspace = "9"; }
-#      { class = "^Plexamp"; workspace = "9"; floating = true; }
-#      { class = "^discord"; workspace = "0"; }
-#      { class = "^rambox"; workspace = "0"; }
-#      { class = "^Slack"; workspace = "0"; }
-#      { class = "^Signal"; workspace = "0"; }
-#      { class = "^TelegramDesktop"; workspace = "0"; }
-#      ];
+assigns = {
+  "9" = [
+    { class = "^Spotify"; }
+  ];
+  "0" = [
+    { class = "^Discord"; }
+  ];
+};
     };
   };
 }
