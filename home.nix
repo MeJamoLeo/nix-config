@@ -30,6 +30,8 @@ home.packages = with pkgs; [
   # GUI
   #=============
   discord
+  obsidian
+  virtualbox
 ];
 
 programs.neovim = {
