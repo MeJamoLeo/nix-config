@@ -2,7 +2,7 @@
 
 {
   imports = [
-  ./i3.nix
+    ./i3.nix
   ];
 
   home = rec { # recでAttribute Set内で他の値を参照できるようにする
@@ -13,6 +13,9 @@
 programs.home-manager.enable = true; # home-manager自身でhome-managerを有効化
 
 home.packages = with pkgs; [
+  #=============
+  # GUI
+  #=============
   bat
   eza
   ripgrep
@@ -22,6 +25,11 @@ home.packages = with pkgs; [
   nodejs_22
   python3
   sbcl #common lisp compiler
+
+  #=============
+  # GUI
+  #=============
+  discord
 ];
 
 programs.neovim = {
@@ -56,4 +64,58 @@ programs.neovim = {
 };
 
 programs.git.enable = true;
+
+services.picom = {
+  activeOpacity = 0.95;
+  backend = "glx";
+  enable = true;
+# extraArgs
+fade = true;
+# fadeDelta
+# fadeExclude
+fadeSteps = [0.1 0.03];
+inactiveOpacity = 0.9;
+menuOpacity = 0.8;
+opacityRules = [
+  "100:class_g = 'zoom'"
+  "100:class_g = 'Brave-browser'"
+  "100:class_g = 'Firefox'"
+  "100:class_g = 'konqueror'"
+  "100:window_type = 'dock' && class_g = 'i3bar'"
+  "80:window_type = 'dock'"
+];
+# package
+# settings #Picom settings. Use this option to configure Picom settings not exposed in a NixOS option or to bypass one. For the available options see the CONFIGURATION FILES section at picom(1).
+# shadow
+shadowExclude = 
+[
+  "name = 'Notification'"
+  "class_g = 'Conky'"
+  "class_g ?= 'Notify-osd'"
+  "class_g = 'Cairo-clock'"
+  "_GTK_FRAME_EXTENTS@:c"
+];
+# shadowOffsets
+# shadowOpacity
+vSync = true;
+# wintypes = 
+# {
+#   tooltip = { fade = true; shadow = false; opacity = 0.9; focus = true; full-shadow = false; }
+#   dock = { shadow = false; }
+#   dnd = { shadow = false; }
+#   popup_menu = { opacity = 0.9; }
+#   dropdown_menu = { opacity = 0.9; }
+# };
+};
+
+
+programs.alacritty = {
+  enable = true;
+  # package
+  # settings
+};
+
+programs.qutebrowser = {
+  enable = true;
+};
 }
