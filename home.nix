@@ -31,7 +31,7 @@ programs.neovim = {
     {
       plugin = iceberg-vim;
       config = ''
-         colorscheme iceberg
+        colorscheme iceberg
       '';
     }
     {
