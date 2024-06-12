@@ -7,13 +7,12 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -46,8 +45,8 @@
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
-	    fcitx5-mozc
-		    fcitx5-configtool
+      fcitx5-mozc
+      fcitx5-configtool
     ];
   };
 
@@ -63,9 +62,9 @@
   fonts = {
     fonts = with pkgs; [
       noto-fonts-cjk-serif
-        noto-fonts-cjk-sans
-        noto-fonts-emoji
-        nerdfonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerdfonts
     ];
     fontDir.enable = true;
     fontconfig = {
@@ -81,10 +80,22 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.i3.enable = true;
+  # Desktop Environment.
+  services.xserver.displayManager = {
+    lightdm.enable = false;
+    gdm.enable = true;
+  };
+
+  services.xserver.desktopManager = {
+    xfce.enable = false;
+    gnome.enable = true;
+  };
+
+  services.xserver.windowManager = {
+    i3.enable = false;
+  };
+
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -117,28 +128,26 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.bbb = {
+  users.users.treo = {
     isNormalUser = true;
-    description = "bbb";
+    description = "treo";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
-    ];
-  };
+  ];
+};
 
   # Install firefox.
   programs.firefox.enable = true;
-  # Install starship
-  programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     git
-     xclip
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git
+    xclip
   #  wget
-  ];
+];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -171,10 +180,8 @@
   # Nixの設定オプション
   nix = {
     settings = {
-      # 実験的な機能を有効にする
-      # `nix-command`: 新しい`nix`コマンドラインインターフェースを有効にする
-      # `flakes`: Nix Flakesサポートを有効にする。これにより、より再現性の高い,かつ宣言的なパッケージ管理が可能となり、プロジェクトの依存関係を管理しやすくなります。
       experimental-features = ["nix-command" "flakes"];
     };
   };
 }
+
