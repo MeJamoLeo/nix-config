@@ -6,7 +6,7 @@ let
   browser = "qutebrowser";
 in {
   xsession.windowManager.i3 = {
-    enable = true;
+    enable = false;
     config = {
       modifier = mod;
 
