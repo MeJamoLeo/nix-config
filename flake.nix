@@ -30,7 +30,7 @@
 # home-manager
 # =================================
     homeConfigurations = {
-      myHome = home-manager.lib.homeManagerConfiguration {
+      treo@nixos = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
 	  inherit system;
           config.allowUnfree = true; # プロプライエタリなパッケージを許可

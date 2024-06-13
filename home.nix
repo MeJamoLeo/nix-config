@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./i3.nix
   ];
 
   home = rec { # recでAttribute Set内で他の値を参照できるようにする
@@ -81,38 +80,12 @@ home.packages = with pkgs; [
   # settings
 };
 
-wayland.windowManager.hyprland.extraConfig = ''
-
-
-
-
-
-
-
-
-
-##############################
-### WINDOWS AND WORKSPACES ###
-##############################
-
-# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-# See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
-
-# Example windowrule v1
-# windowrule = float, ^(kitty)$
-
-# Example windowrule v2
-# windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-
-windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
-  '';
-
 programs.qutebrowser = {
   enable = true;
   extraConfig = ''
-  config.set('content.javascript.clipboard', 'access', 'github.com')
-  config.set('content.javascript.clipboard', 'access', 'atcoder.jp')
-  config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
+    config.set('content.javascript.clipboard', 'access', 'github.com')
+    config.set('content.javascript.clipboard', 'access', 'atcoder.jp')
+    config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
   '';
 };
 
