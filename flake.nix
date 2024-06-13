@@ -14,32 +14,32 @@
 
   outputs = { self, nixpkgs, home-manager }: 
   let 
-      system = "x86_64-linux";
+    system = "x86_64-linux";
   in {
 
 # =================================
 # nixos-configuration
 # =================================
-    nixosConfigurations.NickeyMouseOS = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
-    };
+  nixosConfigurations.NickeyMouseOS = nixpkgs.lib.nixosSystem {
+    modules = [ ./configuration.nix ];
+  };
 
 
 
 # =================================
 # home-manager
 # =================================
-    homeConfigurations = {
-      "treo@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-	  inherit system;
-          config.allowUnfree = true; # プロプライエタリなパッケージを許可
-        };
-        modules = [
-          ./home.nix
-        ];
+  homeConfigurations = {
+    "treo@nixos" = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true; # プロプライエタリなパッケージを許可
       };
+      modules = [
+        ./home.nix
+      ];
     };
   };
+};
 }
 
