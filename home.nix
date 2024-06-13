@@ -41,6 +41,11 @@ home.packages = with pkgs; [
     virtualbox
     vivaldi
     vscode
+
+  #=============
+  # GNOME
+  #=============
+    gnome3.gnome-tweaks
   ];
 
   programs.neovim = {
@@ -92,6 +97,19 @@ programs.qutebrowser = {
     config.set('content.javascript.clipboard', 'access', 'atcoder.jp')
     config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
   '';
+  searchEngines = {
+    "DEFAULT" = "https://duckduckgo.com/?ia=web&q={}";
+    "!g" = "https://www.google.com/search?hl=en&q={}";
+    "!gm" = "https://www.google.com/maps?q={}";
+    "!d" = "https://duckduckgo.com/?ia=web&q={}";
+    "!nw" = "https://nixos.wiki/index.php?search={}";
+    "!np" = "https://github.com/NixOS/nixpkgs/search?q={}";
+    "!no" = "https://mynixos.com/search?q={}";
+    "!hp" = "https://github.com/nix-community/home-manager/search?q={}";
+    "!a" = "https://www.amazon.com/s?k={}";
+    "!gh" = "https://github.com/search?o=desc&q={}&s=stars";
+    "!s" = "https://sourcegraph.com/search?patternType=standard&sm=1&q=context:global+{}";
+    };
 };
 
 programs.starship = {
