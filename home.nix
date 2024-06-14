@@ -118,8 +118,12 @@ programs.starship = {
 
  wayland.windowManager.hyprland = {
    settings = {
-     "$mod" = "SUPER";
-     bind = [
+      "$mod" = "SUPER";
+      monitor = [
+        "eDP-1, highres, auto, 1" #laptop
+        "DP-3, highres, auto-left, 1" #sumsung
+      ];
+      bind = [
           # switch focus
           "$mod, H, movefocus, l"
           "$mod, L, movefocus, r"
@@ -130,6 +134,7 @@ programs.starship = {
           "$mod, F1, exec, show-keybinds"
 
           # keybindings
+          "$mod, M, exit,"
           "$mod, B, exec, qutebrowser"
           "$mod, Return, exec, kitty"
           "ALT, Return, exec, kitty --title float_kitty"
