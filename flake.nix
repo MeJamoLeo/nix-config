@@ -10,9 +10,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager }: 
+  outputs = { self, nixpkgs, home-manager, hyprland }: 
   let 
     system = "x86_64-linux";
   in {
@@ -37,6 +41,8 @@
       };
       modules = [
         ./home.nix
+        hyprland.homeManagerModules.default
+        {wayland.windowManager.hyprland.enable = true;}
       ];
     };
   };
