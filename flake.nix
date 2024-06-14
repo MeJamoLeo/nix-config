@@ -16,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }: 
+  outputs = { self, nixpkgs, home-manager, hyprland }: 
   let 
     system = "x86_64-linux";
   in {
