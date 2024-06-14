@@ -120,14 +120,20 @@ programs.starship = {
    settings = {
      "$mod" = "SUPER";
      bind = [
+          # switch focus
+          "$mod, H, movefocus, l"
+          "$mod, L, movefocus, r"
+          "$mod, K, movefocus, u"
+          "$mod, J, movefocus, d"
+
           # show keybinds list
           "$mod, F1, exec, show-keybinds"
 
           # keybindings
+          "$mod, B, exec, qutebrowser"
           "$mod, Return, exec, kitty"
           "ALT, Return, exec, kitty --title float_kitty"
           "$mod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
-          "$mod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
           "$mod, Q, killactive,"
           "$mod, F, fullscreen, 0"
           "$mod SHIFT, F, fullscreen, 1"
@@ -138,7 +144,7 @@ programs.starship = {
           "$mod, Escape, exec, swaylock"
           "$mod SHIFT, Escape, exec, shutdown-script"
           "$mod, P, pseudo,"
-          "$mod, J, togglesplit,"
+          # "$mod, J, togglesplit,"
           "$mod, E, exec, nemo"
           "$mod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
           "$mod, C ,exec, hyprpicker -a"
@@ -149,12 +155,6 @@ programs.starship = {
           # screenshot
           "$mod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
           ",Print, exec, grimblast --notify --cursor  copy area"
-
-          # switch focus
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
 
           # switch workspace
           "$mod, 1, workspace, 1"
