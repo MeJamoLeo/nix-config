@@ -350,6 +350,7 @@ wayland.windowManager.hyprland = {
           "wl-paste --type image --watch cliphist store #Stores only image data"
           "fcitx5"
         ];
+        input.kb_options = "ctrl:swapcaps";
       };
     };
   }
