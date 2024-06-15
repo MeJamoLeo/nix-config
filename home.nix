@@ -58,6 +58,7 @@ home.packages = with pkgs; [
         plugin = iceberg-vim;
         config = ''
           colorscheme iceberg
+		  set cursorline
         '';
       }
       {
@@ -81,7 +82,14 @@ home.packages = with pkgs; [
       {
         plugin = lazygit-nvim;
         config = ''
-        '';
+          let g:lazygit_floating_window_winblend = 0
+          let g:lazygit_floating_window_scaling_factor = 0.9
+          let g:lazygit_floating_window_border_chars = ['╭','─', '╮', '│', '╯','─', '╰', '│']
+          let g:lazygit_floating_window_use_plenary = 0
+          let g:lazygit_use_neovim_remote = 1
+          let g:lazygit_use_custom_config_file_path = 0
+          nnoremap <silent> <space>lg :LazyGit<CR>
+          '';
       }
     ];
     extraLuaConfig = ''
