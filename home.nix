@@ -325,6 +325,7 @@ programs.qutebrowser = {
         exec-once = [
           "wl-paste --type text --watch cliphist store #Stores only text data"
           "wl-paste --type image --watch cliphist store #Stores only image data"
+          "fcitx5"
         ];
       };
     };
