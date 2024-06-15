@@ -9,9 +9,6 @@
   homeDirectory = "/home/${username}"; # 文字列に値を埋め込む
   stateVersion = "22.11";
 
-  sessionVariables = {
-    EDITOR = "nvim";
-  };
 };
 
 programs.home-manager.enable = true; # home-manager自身でhome-managerを有効化
@@ -32,6 +29,8 @@ home.packages = with pkgs; [
     python3
     sbcl #common lisp compiler
 
+    cliphist #hyprland clipboard
+
   #=============
   # GUI
   #=============
@@ -46,10 +45,13 @@ home.packages = with pkgs; [
   # GNOME
   #=============
     gnome3.gnome-tweaks
+
+
   ];
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       vim-nix
       {
@@ -82,6 +84,37 @@ home.packages = with pkgs; [
         '';
       }
     ];
+    extraLuaConfig = ''
+      local desktop_env = os.getenv("XDG_CURRENT_DESKTOP")
+
+      if desktop_env == "GNOME" then
+      vim.g.clipboard = {
+      name = "xclip",
+      copy = {
+      ['+'] = 'xclip -selection clipboard',
+      ['*'] = 'xclip -selection primary',
+      },
+      paste = {
+      ['+'] = 'xclip -selection clipboard -o',
+      ['*'] = 'xclip -selection primary -o',
+      },
+      cache_enabled = 0,
+      }
+      elseif desktop_env == "Hyprland" then
+      vim.g.clipboard = {
+      name = "cliphist",
+      copy = {
+      ['+'] = 'cliphist copy',
+      ['*'] = 'cliphist copy',
+      },
+      paste = {
+      ['+'] = 'cliphist paste',
+      ['*'] = 'cliphist paste',
+      },
+      cache_enabled = 0,
+      }
+      end;
+    '';
   };
 
   programs.kitty = {
@@ -227,6 +260,10 @@ programs.qutebrowser = {
 
           # clipboard manager
           "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+        ];
+        exec-once = [
+          "wl-paste --type text --watch cliphist store #Stores only text data"
+          "wl-paste --type image --watch cliphist store #Stores only image data"
         ];
       };
     };
