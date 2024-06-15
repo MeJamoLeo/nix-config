@@ -194,7 +194,8 @@ programs.qutebrowser = {
     config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
 
 
-    config.bind('jj', 'mode-leave', mode='insert')
+    # TODO: I cannot use 'j' for input
+    # config.bind('jj', 'mode-leave', mode='insert')
 
     # Unbind the original keybindings
     config.unbind('<Shift-j>', mode='normal')
