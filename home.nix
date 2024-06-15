@@ -52,6 +52,20 @@ home.packages = with pkgs; [
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    coc = {
+      enable = true;
+      pluginConfig = ''
+          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd', 'coc-prettier', 'coc-pairs' ]
+
+          highlight CocErrorSign ctermfg=15 ctermbg=196
+          highlight CocWarningSign ctermfg=0 ctermbg=172
+          "select with Enter
+          inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
+      '';
+      settings = {
+        "suggest.noselect" = true;
+      };
+    };
     plugins = with pkgs.vimPlugins; [
       vim-nix
       {
@@ -59,18 +73,6 @@ home.packages = with pkgs; [
         config = ''
           colorscheme iceberg
           set cursorline
-        '';
-      }
-      {
-        plugin = coc-nvim;
-        config = ''
-          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd' ]
-
-          highlight CocErrorSign ctermfg=15 ctermbg=196
-          highlight CocWarningSign ctermfg=0 ctermbg=172
-
-          "select with Enter
-          inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
         '';
       }
       {
@@ -89,6 +91,18 @@ home.packages = with pkgs; [
           let g:lazygit_use_neovim_remote = 1
           let g:lazygit_use_custom_config_file_path = 0
           nnoremap <silent> <space>lg :LazyGit<CR>
+        '';
+      }
+      {
+        plugin = vim-gitgutter;
+        config = ''
+          let g:gitgutter_enabled = 1
+          let g:gitgutter_sign_allow_clobber = 1
+          highlight GitGutterAdd ctermbg=Green
+          "highlight GitGutterChange guibg=Yellow
+          "highlight GitGutterDelete guibg=Red
+          let g:gitgutter_highlight_lines = 0
+          let g:gitgutter_nr_highlight_lines = 1
         '';
       }
     ];
