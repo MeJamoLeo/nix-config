@@ -85,6 +85,69 @@ home.packages = with pkgs; [
       }
     ];
     extraLuaConfig = ''
+      -- base config
+      vim.opt.number = true
+      vim.opt.clipboard:append('unnamedplus')
+      vim.opt.autoindent = true
+      vim.opt.smartindent = true
+      vim.opt.ignorecase = true
+      vim.opt.shiftwidth = 4
+      vim.opt.tabstop = 4
+      vim.opt.softtabstop = 4
+      vim.opt.expandtab = false
+      vim.opt.laststatus = 0
+      vim.opt.list = true
+      vim.opt.listchars = { tab = '»-', trail = '-', eol = '↲', extends = '»', precedes = '«', nbsp = '%' }
+      vim.opt.termguicolors = true
+      vim.api.nvim_create_autocmd("TermOpen", { pattern = "*", command = "startinsert" })
+      vim.opt.signcolumn = "yes"
+
+      -- func
+      if vim.fn.has('nvim') == 1 then
+        -- `:Term` コマンドを定義します。水平分割、20行の高さにリサイズし、ターミナルを開きます。
+          vim.api.nvim_create_user_command('Term', function(opts)
+          vim.cmd('split')
+          vim.cmd('wincmd j')
+          vim.cmd('resize 20')
+          vim.cmd('terminal ' .. table.concat(opts.fargs, ' '))
+        end, { nargs = '*' })
+
+      -- `:Termv` コマンドを定義します。垂直分割し、ターミナルを開きます。
+          vim.api.nvim_create_user_command('Termv', function(opts)
+          vim.cmd('vsplit')
+          vim.cmd('wincmd l')
+          vim.cmd('terminal ' .. table.concat(opts.fargs, ' '))
+        end, { nargs = '*' })
+      end
+
+
+      -- maps
+      vim.api.nvim_set_keymap('i', 'jj', '<ESC>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<ESC><ESC>', ':nohlsearch<CR><ESC>', { noremap = true, silent = true })
+
+      vim.g.mapleader = ' '
+      vim.api.nvim_set_keymap('n', '<Leader>nc', ':vs ~/.nix-config/configuration.nix<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>nh', ':vs ~/.nix-config/home.nix<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>nf', ':vs ~/.nix-config/flake.nix<CR>', { noremap = true, silent = true })
+
+      vim.api.nvim_set_keymap('n', '<Leader>t', ':tabnew<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader><CR>', ':Term<CR>', { noremap = true, silent = true })
+
+      -- TODO: oj Atcoder
+      -- vim.api.nvim_set_keymap('n', '<Leader>aT', ':vsplit | terminal<CR>g++ main.cpp && oj t -d tests/<CR>', { noremap = true, silent = true })
+      -- vim.api.nvim_set_keymap('n', '<Leader>aS', ':vsplit | terminal oj s main.cpp<CR>', { noremap = true, silent = true })
+
+      -- netrw
+      vim.api.nvim_create_autocmd("FileType", {
+      pattern = "netrw",
+      callback = function()
+      vim.api.nvim_buf_set_keymap(0, 'n', 'v', ":execute 'vsplit' fnameescape(expand('<cfile>'))<CR><C-w>L<C-w>p", { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', 'o', ":execute 'split' fnameescape(expand('<cfile>'))<CR><C-w>p", { noremap = true, silent = true })
+      end
+      })
+
+
+      -- clipboard config
       local desktop_env = os.getenv("XDG_CURRENT_DESKTOP")
 
       if desktop_env == "GNOME" then
