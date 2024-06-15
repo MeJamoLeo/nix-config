@@ -58,7 +58,7 @@ home.packages = with pkgs; [
         plugin = iceberg-vim;
         config = ''
           colorscheme iceberg
-		  set cursorline
+          set cursorline
         '';
       }
       {
@@ -89,7 +89,7 @@ home.packages = with pkgs; [
           let g:lazygit_use_neovim_remote = 1
           let g:lazygit_use_custom_config_file_path = 0
           nnoremap <silent> <space>lg :LazyGit<CR>
-          '';
+        '';
       }
     ];
     extraLuaConfig = ''
@@ -224,17 +224,17 @@ programs.qutebrowser = {
     "!a" = "https://www.amazon.com/s?k={}";
     "!gh" = "https://github.com/search?o=desc&q={}&s=stars";
     "!s" = "https://sourcegraph.com/search?patternType=standard&sm=1&q=context:global+{}";
-    };
+  };
 };
 
- wayland.windowManager.hyprland = {
-   settings = {
-      "$mod" = "SUPER";
-      monitor = [
-        "eDP-1, highres, auto, 1" #laptop
-        "DP-3, highres, auto-left, 1" #sumsung
-      ];
-      bind = [
+wayland.windowManager.hyprland = {
+  settings = {
+    "$mod" = "SUPER";
+    monitor = [
+      "eDP-1, highres, auto, 1" #laptop
+      "DP-3, highres, auto-left, 1" #sumsung
+    ];
+    bind = [
           # switch focus
           "$mod, H, movefocus, l"
           "$mod, L, movefocus, r"
