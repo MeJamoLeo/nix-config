@@ -194,16 +194,14 @@ programs.qutebrowser = {
     config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
 
 
+    config.bind('jj', 'mode-leave', mode='insert')
 
     # Unbind the original keybindings
     config.unbind('<Shift-j>', mode='normal')
     config.unbind('<Shift-k>', mode='normal')
 
-    # Bind Shift+j to move the tab focus to the left
-    config.bind('<Shift-j>', 'tab-prev', mode='normal')
-
-    # Bind Shift+k to move the tab focus to the right
-    config.bind('<Shift-k>', 'tab-next', mode='normal')
+    config.bind('<Shift-j>', 'tab-prev', mode='normal') # Bind Shift+j to move the tab focus to the left
+    config.bind('<Shift-k>', 'tab-next', mode='normal') # Bind Shift+k to move the tab focus to the right
   '';
   searchEngines = {
     "DEFAULT" = "https://duckduckgo.com/?ia=web&q={}";
