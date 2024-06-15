@@ -124,10 +124,6 @@ programs.qutebrowser = {
     };
 };
 
-programs.starship = {
-  enable = true;
-};
-
  wayland.windowManager.hyprland = {
    settings = {
       "$mod" = "SUPER";
