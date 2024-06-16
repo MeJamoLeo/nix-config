@@ -299,6 +299,7 @@ wayland.windowManager.hyprland = {
 
           # keybindings
           "$mod, Space, exec, pkill wofi || wofi --show drun"
+          "$mod SHIFT, Space, exec, pkill wofi || wofi --show"
           "$mod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
           "$mod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
           "$mod, P, pseudo,"
@@ -411,5 +412,14 @@ wayland.windowManager.hyprland = {
         allow_markup = true;
         width = 250;
       };
+    };
+    programs.zathura = {
+      enable = true;
+      mappings = {
+        D = "toggle_page_mode";
+      };
+    };
+    programs.fzf = {
+      enable = true;
     };
   }
