@@ -42,6 +42,7 @@ home.packages = with pkgs; [
     virtualbox
     vivaldi
     vscode
+    spotify
 
   #=============
   # GNOME
