@@ -260,10 +260,10 @@ wayland.windowManager.hyprland = {
           "$mod, K, movefocus, u"
           "$mod, J, movefocus, d"
           ### resize window
-          "$mod SHIFT, H, resizeactive, -80 0"
-          "$mod SHIFT, L, resizeactive, 80 0"
-          "$mod SHIFT, K, resizeactive, 0 -80"
-          "$mod SHIFT, J, resizeactive, 0 80"
+          "$mod SHIFT, H, resizeactive, -90 0"
+          "$mod SHIFT, L, resizeactive, 90 0"
+          "$mod SHIFT, K, resizeactive, 0 -90"
+          "$mod SHIFT, J, resizeactive, 0 90"
           ### move window
           "$mod CTRL, H, movewindow, l"
           "$mod CTRL, L, movewindow, r"
