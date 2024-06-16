@@ -246,6 +246,10 @@ programs.qutebrowser = {
 
 wayland.windowManager.hyprland = {
   settings = {
+    env = [
+      "TERM, kitty"
+      "BROWSER, qutebrowser"
+    ];
     "$mod" = "SUPER";
     monitor = [
       "eDP-1, highres, auto, 1" #laptop
