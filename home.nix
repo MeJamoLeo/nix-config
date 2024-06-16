@@ -252,32 +252,56 @@ wayland.windowManager.hyprland = {
       "DP-3, highres, auto-left, 1" #sumsung
     ];
     bind = [
-          # switch focus
+          # Keyboard Shortcuts for Pop_OS! like??
+          ## Move, resize, and swap windows
+          ### switch focus
           "$mod, H, movefocus, l"
           "$mod, L, movefocus, r"
           "$mod, K, movefocus, u"
           "$mod, J, movefocus, d"
+          ### resize window
+          "$mod SHIFT, H, resizeactive, -80 0"
+          "$mod SHIFT, L, resizeactive, 80 0"
+          "$mod SHIFT, K, resizeactive, 0 -80"
+          "$mod SHIFT, J, resizeactive, 0 80"
+          ### move window
+          "$mod CTRL, H, movewindow, l"
+          "$mod CTRL, L, movewindow, r"
+          "$mod CTRL, K, movewindow, u"
+          "$mod CTRL, J, movewindow, d"
+
+          # "$mod ALT, left, moveactive,  -80 0"
+          # "$mod ALT, right, moveactive, 80 0"
+          # "$mod ALT, up, moveactive, 0 -80"
+          # "$mod ALT, down, moveactive, 0 80"
+
+          ## Manipulate windows
+          "$mod, S, togglesplit,"
+          # "$mod, O, TODO: Change window orientation,"
+          "$mod, G, togglefloating,"
+          "$mod, M, fullscreen, 0"
+          "$mod, Q, killactive,"
+
+          ## Manage workspace and displays
+          "$mod, Escape, exec, hyprlock"
+
+          ## Use the launcher
+          ## Switch between apps and windows
+          ## Miscellaneous OS shortcuts
+          "$mod, B, exec, qutebrowser"
+          "$mod, T, exec, kitty"
+          ## Accessibility shortcuts
+          "$mod SHIFT, Escape, exit,"
+          "$mod CTRL SHIFT, Escape, exec, shutdown-script"
 
           # show keybinds list
           "$mod, F1, exec, show-keybinds"
 
           # keybindings
-          "$mod, M, exit,"
-          "$mod, B, exec, qutebrowser"
-          "$mod, Return, exec, kitty"
-          "ALT, Return, exec, kitty --title float_kitty"
-          "$mod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
-          "$mod, Q, killactive,"
-          "$mod, F, fullscreen, 0"
-          "$mod SHIFT, F, fullscreen, 1"
-          "$mod, Space, togglefloating,"
-          "$mod, D, exec, pkill wofi || wofi --show drun"
+          "$mod, Space, exec, pkill wofi || wofi --show drun"
           "$mod SHIFT, D, exec, hyprctl dispatch exec '[workspace 4 silent] discord'"
           "$mod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
-          "$mod, Escape, exec, swaylock"
-          "$mod SHIFT, Escape, exec, shutdown-script"
           "$mod, P, pseudo,"
-          # "$mod, J, togglesplit,"
           "$mod, E, exec, nemo"
           "$mod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped"
           "$mod, C ,exec, hyprpicker -a"
@@ -314,20 +338,6 @@ wayland.windowManager.hyprland = {
           "$mod SHIFT, 0, movetoworkspacesilent, 10"
           "$mod CTRL, c, movetoworkspace, empty"
 
-          # window control
-          "$mod SHIFT, left, movewindow, l"
-          "$mod SHIFT, right, movewindow, r"
-          "$mod SHIFT, up, movewindow, u"
-          "$mod SHIFT, down, movewindow, d"
-          "$mod CTRL, left, resizeactive, -80 0"
-          "$mod CTRL, right, resizeactive, 80 0"
-          "$mod CTRL, up, resizeactive, 0 -80"
-          "$mod CTRL, down, resizeactive, 0 80"
-          "$mod ALT, left, moveactive,  -80 0"
-          "$mod ALT, right, moveactive, 80 0"
-          "$mod ALT, up, moveactive, 0 -80"
-          "$mod ALT, down, moveactive, 0 80"
-
           # media and volume controls
           ",XF86AudioRaiseVolume,exec, pamixer -i 2"
           ",XF86AudioLowerVolume,exec, pamixer -d 2"
@@ -354,6 +364,52 @@ wayland.windowManager.hyprland = {
           "fcitx5"
         ];
         input.kb_options = "ctrl:swapcaps";
+        # windowrulev2 = [
+        #   "new, tile horizontal"
+        # ];
+      };
+    };
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          grace = 300;
+          hide_cursor = true;
+          no_fade_in = false;
+        };
+
+        background = [
+          {
+            path = "screenshot";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
+
+        input-field = [
+          {
+            size = "200, 50";
+            position = "0, -80";
+            monitor = "";
+            dots_center = true;
+            fade_on_empty = false;
+            font_color = "rgb(202, 211, 245)";
+            inner_color = "rgb(91, 96, 120)";
+            outer_color = "rgb(24, 25, 38)";
+            outline_thickness = 5;
+            placeholder_text = "'\'<span foreground=\"##cad3f5\">Password...</span>'\'";
+            shadow_passes = 2;
+          }
+        ];
+      };
+    };
+    programs.wofi = {
+      enable = true;
+      settings = {
+        location = "bottom-right";
+        allow_markup = true;
+        width = 250;
       };
     };
   }
