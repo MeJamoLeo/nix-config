@@ -30,6 +30,8 @@ home.packages = with pkgs; [
     sbcl #common lisp compiler
 
     cliphist #hyprland clipboard
+    xclip
+    git
 
   #=============
   # GUI
