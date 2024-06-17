@@ -58,15 +58,19 @@ home.packages = with pkgs; [
     coc = {
       enable = true;
       pluginConfig = ''
-          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd', 'coc-prettier', 'coc-pairs' ]
+          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd', 'coc-prettier', 'coc-pairs', 'coc-highlight' ]
 
           highlight CocErrorSign ctermfg=15 ctermbg=196
           highlight CocWarningSign ctermfg=0 ctermbg=172
-          "select with Enter
-          inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
       '';
       settings = {
         "suggest.noselect" = true;
+        languageserver = {
+          nix = {
+            enableLanguageServer = true;
+            serverPath = "nil";
+          };
+        };
       };
     };
     plugins = with pkgs.vimPlugins; [
