@@ -14,9 +14,14 @@
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
+
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland }: 
+  outputs = { self, nixpkgs, home-manager, hyprland, hy3 }: 
   let 
     system = "x86_64-linux";
   in {
@@ -42,7 +47,12 @@
       modules = [
         ./home.nix
         hyprland.homeManagerModules.default
-        {wayland.windowManager.hyprland.enable = true;}
+        {
+          wayland.windowManager.hyprland = {
+            enable = true;
+            plugins = [ hy3.packages.x86_64-linux.hy3 ];
+          };
+        }
       ];
     };
   };
