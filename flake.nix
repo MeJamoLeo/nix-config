@@ -64,8 +64,8 @@
           wayland.windowManager.hyprland = {
             enable = true;
             plugins = [
-              hy3.packages.x86_64-linux.hy3
-              Hyprspace.packages.x86_64-linux.Hyprspace
+              hy3.packages.${system}.hy3
+              Hyprspace.packages.${system}.Hyprspace
             ];
           };
         }
