@@ -211,8 +211,9 @@ home.packages = with pkgs; [
 
   programs.kitty = {
     enable = true;
-  # package
-  # settings
+    settings = {
+      font_size = "7";
+    };
 };
 
 programs.qutebrowser = {
@@ -245,6 +246,11 @@ programs.qutebrowser = {
     "!a" = "https://www.amazon.com/s?k={}";
     "!gh" = "https://github.com/search?o=desc&q={}&s=stars";
     "!s" = "https://sourcegraph.com/search?patternType=standard&sm=1&q=context:global+{}";
+  };
+  settings = {
+    fonts.default_size = "10pt";
+    # zoom.default = "80%"; # for laptop
+    zoom.default = "80%"; # for 4k monitor
   };
 };
 
