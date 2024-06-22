@@ -303,28 +303,33 @@ wayland.windowManager.hyprland = {
           # Keyboard Shortcuts for Pop_OS! like??
           ## Move, resize, and swap windows
           ### switch focus
-          "$mod, H, movefocus, l"
-          "$mod, L, movefocus, r"
-          "$mod, K, movefocus, u"
-          "$mod, J, movefocus, d"
+          # "$mod, H, movefocus, l"
+          # "$mod, L, movefocus, r"
+          # "$mod, K, movefocus, u"
+          # "$mod, J, movefocus, d"
+          "$mod, H, hy3:movefocus, l"
+          "$mod, L, hy3:movefocus, r"
+          "$mod, K, hy3:movefocus, u"
+          "$mod, J, hy3:movefocus, d"
           ### resize window
           "$mod SHIFT, H, resizeactive, -95 0"
           "$mod SHIFT, L, resizeactive, 95 0"
           "$mod SHIFT, K, resizeactive, 0 -95"
           "$mod SHIFT, J, resizeactive, 0 95"
           ### move window
-          "$mod CTRL, H, movewindow, l"
-          "$mod CTRL, L, movewindow, r"
-          "$mod CTRL, K, movewindow, u"
-          "$mod CTRL, J, movewindow, d"
-
-          # "$mod ALT, left, moveactive,  -80 0"
-          # "$mod ALT, right, moveactive, 80 0"
-          # "$mod ALT, up, moveactive, 0 -80"
-          # "$mod ALT, down, moveactive, 0 80"
+          # "$mod CTRL, H, movewindow, l"
+          # "$mod CTRL, L, movewindow, r"
+          # "$mod CTRL, K, movewindow, u"
+          # "$mod CTRL, J, movewindow, d"
+          "$mod CTRL, H, hy3:movewindow, l"
+          "$mod CTRL, L, hy3:movewindow, r"
+          "$mod CTRL, K, hy3:movewindow, u"
+          "$mod CTRL, J, hy3:movewindow, d"
 
           ## Manipulate windows
-          "$mod, S, togglesplit,"
+          "$mod, Tab, overview:toggle"
+
+
           # "$mod, O, TODO: Change window orientation,"
           "$mod, G, togglefloating,"
           "$mod, M, fullscreen, 0"

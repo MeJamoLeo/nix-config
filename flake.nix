@@ -19,9 +19,14 @@
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
+
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, hy3 }: 
+  outputs = { self, nixpkgs, home-manager, hyprland, hy3, Hyprspace }: 
   let 
     system = "x86_64-linux";
   in {
@@ -50,7 +55,10 @@
         {
           wayland.windowManager.hyprland = {
             enable = true;
-            plugins = [ hy3.packages.x86_64-linux.hy3 ];
+            plugins = [
+              hy3.packages.x86_64-linux.hy3
+              Hyprspace.packages.x86_64-linux.Hyprspace
+            ];
           };
         }
       ];
