@@ -26,7 +26,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, hy3, Hyprspace }: 
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    hyprland,
+    hy3,
+    Hyprspace,
+    split-monitor-workspaces,
+  }: 
   let 
     system = "x86_64-linux";
   in {
