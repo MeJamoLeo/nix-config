@@ -268,9 +268,26 @@ wayland.windowManager.hyprland = {
       "eDP-1, highres, auto, 1" #laptop
       "DP-3, highres, auto-left, 1" #sumsung
     ];
+    general = {
+      layout = "hy3";
+    };
+    master = {
+      allow_small_split = true;
+      # special_scale_factor = 1;
+      mfact = 0.5;
+      # new_status = "inherit";
+      # new_on_top = "false";
+      orientation = "right";
+    };
+    dwindle = {
+      force_split = 2;
+      preserve_split = true;
+    };
     decoration = {
-      active_opacity = 0.7;
-      inactive_opacity = 0.7;
+      rounding = 10;
+      active_opacity = 0.85;
+      inactive_opacity = 0.8;
+      fullscreen_opacity = 0.8;
       drop_shadow = true;
       shadow_range = 5;
       shadow_render_power = 3;
@@ -399,9 +416,6 @@ wayland.windowManager.hyprland = {
           "fcitx5"
         ];
         input.kb_options = "ctrl:swapcaps";
-        # windowrulev2 = [
-        #   "new, tile horizontal"
-        # ];
       };
     };
     programs.hyprlock = {
