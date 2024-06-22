@@ -386,6 +386,9 @@ wayland.windowManager.hyprland = {
 
           # clipboard manager
           "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+
+          #layout
+          "$mod, A, layoutmsg, addmaster"
         ];
         exec-once = [
           "wl-paste --type text --watch cliphist store #Stores only text data"
