@@ -223,6 +223,8 @@ programs.qutebrowser = {
     config.set('content.javascript.clipboard', 'access', 'atcoder.jp')
     config.set('content.javascript.clipboard', 'access', 'chat.openai.com')
 
+    config.set('content.blocking.enabled', True)
+
 
     # TODO: I cannot use 'j' for input
     # config.bind('jj', 'mode-leave', mode='insert')
@@ -246,6 +248,7 @@ programs.qutebrowser = {
     "!a" = "https://www.amazon.com/s?k={}";
     "!gh" = "https://github.com/search?o=desc&q={}&s=stars";
     "!s" = "https://sourcegraph.com/search?patternType=standard&sm=1&q=context:global+{}";
+    "!y" = "https://www.youtube.com/results?search_query={}";
   };
   settings = {
     fonts.default_size = "10pt";
