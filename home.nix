@@ -265,6 +265,20 @@ wayland.windowManager.hyprland = {
       "eDP-1, highres, auto, 1" #laptop
       "DP-3, highres, auto-left, 1" #sumsung
     ];
+    decoration = {
+      active_opacity = 0.7;
+      inactive_opacity = 0.7;
+      drop_shadow = true;
+      shadow_range = 5;
+      shadow_render_power = 3;
+      blur = {
+        enabled = true;
+        size = 9;
+        new_optimizations = true;
+        passes = 3;
+        ignore_opacity = true;
+      };
+    };
     bind = [
           # Keyboard Shortcuts for Pop_OS! like??
           ## Move, resize, and swap windows
