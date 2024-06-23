@@ -18,6 +18,7 @@ home.packages = with pkgs; [
   #=============
   # GUI
   #=============
+    gcc13
     bat
     btop
     eza
@@ -112,6 +113,9 @@ home.packages = with pkgs; [
           let g:gitgutter_highlight_lines = 0
           let g:gitgutter_nr_highlight_lines = 1
         '';
+      }
+      {
+        plugin = vim-cpp-enhanced-highlight;
       }
     ];
     extraLuaConfig = ''
