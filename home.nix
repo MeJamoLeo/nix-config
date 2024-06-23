@@ -24,6 +24,7 @@ home.packages = with pkgs; [
     ripgrep
     lazygit
     online-judge-tools
+    online-judge-template-generator
 
     nodejs_22
     python3
@@ -58,7 +59,7 @@ home.packages = with pkgs; [
     coc = {
       enable = true;
       pluginConfig = ''
-          let g:coc_global_extensions = [ 'rnix-lsp', 'coc-clangd', 'coc-prettier', 'coc-pairs', 'coc-highlight' ]
+          let g:coc_global_extensions = [ 'coc-nix', 'coc-clangd', 'coc-prettier', 'coc-pairs', 'coc-highlight' ]
 
           highlight CocErrorSign ctermfg=15 ctermbg=196
           highlight CocWarningSign ctermfg=0 ctermbg=172
@@ -212,7 +213,7 @@ home.packages = with pkgs; [
   programs.kitty = {
     enable = true;
     settings = {
-      font_size = "7";
+      font_size = "8";
     };
 };
 
