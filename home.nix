@@ -290,9 +290,9 @@ wayland.windowManager.hyprland = {
     };
     decoration = {
       rounding = 10;
-      active_opacity = 0.85;
-      inactive_opacity = 0.8;
-      fullscreen_opacity = 0.8;
+      active_opacity = 0.75;
+      inactive_opacity = 0.7;
+      fullscreen_opacity = 0.75;
       drop_shadow = true;
       shadow_range = 5;
       shadow_render_power = 3;
