@@ -32,7 +32,8 @@ home.packages = with pkgs; [
     sbcl #common lisp compiler
 
     cliphist #hyprland clipboard
-    xclip
+    brightnessctl
+    wev
     git
 
   #=============
@@ -420,28 +421,27 @@ wayland.windowManager.hyprland = {
           "$mod SHIFT CTRL, l, split-changemonitor, +1"
           "$mod SHIFT CTRL, h, split-changemonitor, -1"
 
-          # media and volume controls
-          ",XF86AudioRaiseVolume,exec, pamixer -i 2"
-          ",XF86AudioLowerVolume,exec, pamixer -d 2"
-          ",XF86AudioMute,exec, pamixer -t"
-          ",XF86AudioPlay,exec, playerctl play-pause"
-          ",XF86AudioNext,exec, playerctl next"
-          ",XF86AudioPrev,exec, playerctl previous"
-          ",XF86AudioStop, exec, playerctl stop"
-          "$mod, mouse_down, workspace, e-1"
-          "$mod, mouse_up, workspace, e+1"
-
-          # laptop brigthness
-          ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-          ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-          "$mod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-          "$mod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
 
           # clipboard manager
           "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
           #layout
           "$mod, A, layoutmsg, addmaster"
+        ];
+        binde = [
+          # Function keys
+          ",XF86AudioMute,exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ",XF86AudioRaiseVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86AudioMute,exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ",XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+          ",XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+          ",XF86Display, exec, "
+          ",XF86WLAN, exec, "
+          ",XF86Messenger, exec, "
+          ",XF86Go, exec, "
+          ",Cancel, exec, "
+          ",XF86Favorites, exec, "
         ];
         exec-once = [
           "wl-paste --type text --watch cliphist store #Stores only text data"
