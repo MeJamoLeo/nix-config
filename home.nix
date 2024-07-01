@@ -217,7 +217,7 @@ home.packages = with pkgs; [
   programs.kitty = {
     enable = true;
     settings = {
-      font_size = "8";
+      font_size = "10";
     };
 };
 
