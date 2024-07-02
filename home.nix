@@ -491,4 +491,11 @@ wayland.windowManager.hyprland = {
     programs.fzf = {
       enable = true;
     };
+    programs.tmux = {
+      enable = true;
+      customPaneNavigationAndResize = true;
+      keyMode = "vi";
+      mouse = true;
+      prefix = "C-t";
+    };
   }
