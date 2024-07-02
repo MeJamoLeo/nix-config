@@ -253,6 +253,7 @@ programs.qutebrowser = {
     "!hp" = "https://github.com/nix-community/home-manager/search?q={}";
     "!a" = "https://www.amazon.com/s?k={}";
     "!gh" = "https://github.com/search?o=desc&q={}&s=stars";
+    "!ghn" = "https://github.com/search?o=desc&q=lang%3ANix+{}&type=code";
     "!s" = "https://sourcegraph.com/search?patternType=standard&sm=1&q=context:global+{}";
     "!y" = "https://www.youtube.com/results?search_query={}";
   };
