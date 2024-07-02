@@ -259,8 +259,8 @@ programs.qutebrowser = {
   };
   settings = {
     fonts.default_size = "10pt";
-    # zoom.default = "80%"; # for laptop
-    zoom.default = "100%"; # for 4k monitor
+    zoom.default = "75%"; # for laptop
+    # zoom.default = "100%"; # for 4k monitor
   };
 };
 
