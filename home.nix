@@ -8,7 +8,6 @@
   username="treo";
   homeDirectory = "/home/${username}"; # 文字列に値を埋め込む
   stateVersion = "22.11";
-
 };
 
 programs.home-manager.enable = true; # home-manager自身でhome-managerを有効化
@@ -52,8 +51,6 @@ home.packages = with pkgs; [
   # GNOME
   #=============
     gnome3.gnome-tweaks
-
-
   ];
 
   programs.kitty = {
@@ -100,8 +97,7 @@ home.packages = with pkgs; [
       };
       settings = {
       fonts.default_size = "10pt";
-      zoom.default = "75%"; # for laptop
-    # zoom.default = "100%"; # for 4k monitor
+      zoom.default = "100%"; # for 4k monitor
   };
 };
 
