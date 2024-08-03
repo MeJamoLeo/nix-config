@@ -24,6 +24,9 @@ home.packages = with pkgs; [
     ripgrep
     tree-sitter
     lazygit
+    unzip
+    wget
+    fd
     online-judge-tools
     online-judge-template-generator
 
