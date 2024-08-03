@@ -22,6 +22,7 @@ home.packages = with pkgs; [
     btop
     eza
     ripgrep
+    tree-sitter
     lazygit
     online-judge-tools
     online-judge-template-generator
@@ -29,6 +30,7 @@ home.packages = with pkgs; [
     nodejs_22
     python3
     sbcl #common lisp compiler
+    cargo
 
     cliphist #hyprland clipboard
     brightnessctl
@@ -328,6 +330,7 @@ wayland.windowManager.hyprland = {
     programs.fzf = {
       enable = true;
     };
+
     programs.tmux = {
       enable = true;
       customPaneNavigationAndResize = true;
@@ -372,4 +375,7 @@ wayland.windowManager.hyprland = {
         set -g pane-border-style "fg=#6b7089"
       '';
     };
+programs.neovim = {
+	enable = false;
+};
   }
