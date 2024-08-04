@@ -47,7 +47,6 @@ home.packages = with pkgs; [
     brave
     discord
     obsidian
-    virtualbox
     vivaldi
     vscode
     spotify

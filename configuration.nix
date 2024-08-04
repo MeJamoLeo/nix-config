@@ -127,11 +127,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.treo = {
     isNormalUser = true;
     description = "treo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "user-with-access-to-virtualbox" ];
     packages = with pkgs; [
     #  thunderbird
   ];
@@ -150,6 +153,7 @@
     git
   #  wget
 ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
