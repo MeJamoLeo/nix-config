@@ -47,7 +47,7 @@
 # =================================
 # nixos-configuration
 # =================================
-  nixosConfigurations.NickeyMouseOS = nixpkgs.lib.nixosSystem {
+  nixosConfigurations.budou = nixpkgs.lib.nixosSystem {
     modules = [ ./configuration.nix ];
   };
 
@@ -57,7 +57,7 @@
 # home-manager
 # =================================
   homeConfigurations = {
-    "treo@nixos" = home-manager.lib.homeManagerConfiguration {
+    "treo@budou" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true; # プロプライエタリなパッケージを許可
