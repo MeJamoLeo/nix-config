@@ -135,6 +135,9 @@
     isNormalUser = true;
     description = "treo";
     extraGroups = [ "networkmanager" "wheel" "user-with-access-to-virtualbox" ];
+    openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4ZbHFcjQAxNN1qeztFmtpm2YB5aOzMjNMI1sETlec+ treo@treo-de"
+    ];
     packages = with pkgs; [
     #  thunderbird
   ];
@@ -165,8 +168,17 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+# Enable the OpenSSH daemon.
+services.openssh = {
+	enable = true;
+	settings = {
+		X11Forwarding = true;
+		PermitRootLogin = "no"; # disable root login
+			PasswordAuthentication = false; # disable password login
+	};
+	openFirewall = true;
+};
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
